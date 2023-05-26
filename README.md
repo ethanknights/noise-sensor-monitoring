@@ -2,7 +2,7 @@
 WIP to explore how to build an alerting pipeline for processing noise-sensor data.
 
 ```shell
-python run_demo.py
+python run_pipeline.py
 ```
 
 ### Dev. Notes
