@@ -10,7 +10,7 @@ df = df.rename(columns={'Category': 'datetimestamp'})
 fig = make_subplots(rows=2, cols=1, subplot_titles=("Site 1", "Site 2"))
 
 # Define colors for traces
-colors = ["blue", "green", "orange"]
+colors = ["black", "grey"]
 
 # Add traces for the line plot with shaded boundaries
 fig.add_trace(
@@ -22,22 +22,8 @@ fig.add_trace(
     row=1, col=1
 )
 fig.add_trace(
-    go.Scatter(x=df['datetimestamp'], y=df['Minimum'], mode="lines", name="Minimum", fill='tonexty', fillcolor=colors[2], line=dict(color=colors[1])),
+    go.Scatter(x=df['datetimestamp'], y=df['Minimum'], mode="lines", name="Minimum", fill='tonexty', fillcolor='rgba(0, 0, 0, 0.3)', line=dict(color=colors[1])),
     row=1, col=1
-)
-
-# Add traces for the line plot with shaded boundaries
-fig.add_trace(
-    go.Scatter(x=df['datetimestamp'], y=df['Reading'], mode="lines", name="Reading", line=dict(color=colors[0])),
-    row=2, col=1
-)
-fig.add_trace(
-    go.Scatter(x=df['datetimestamp'], y=df['Maximum'], mode="lines", name="Maximum", line=dict(color=colors[1])),
-    row=2, col=1
-)
-fig.add_trace(
-    go.Scatter(x=df['datetimestamp'], y=df['Minimum'], mode="lines", name="Minimum", fill='tonexty', fillcolor=colors[2], line=dict(color=colors[1])),
-    row=2, col=1
 )
 
 # Add a red dashed line at value 80
