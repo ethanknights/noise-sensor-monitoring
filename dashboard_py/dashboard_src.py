@@ -2,8 +2,7 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-
-def add_traces(fig, df, row, col):
+def add_sensor_subplot(fig, df, row, col):
     # Define colors for traces
     colors = ["black", "grey"]
 
@@ -64,10 +63,12 @@ df_site2['Reading'] = df_site2['Average LAeq']
 df_site2 = df_site2[['datetimestamp', 'Reading']]
 df_site2 = df_site2.sort_values('datetimestamp')
 
+nRows = 2
+nCols = 1
+
 # Create subplots
-fig = make_subplots(rows=2,
-                    cols=1,
-                    # print_grid=True,
+fig = make_subplots(rows=nRows,
+                    cols=nCols,
                     # vertical_spacing=0.1,
                     # horizontal_spacing=1,
                     x_title='Date & Time',
@@ -76,8 +77,8 @@ fig = make_subplots(rows=2,
 
 
 # Add traces for each Site
-fig = add_traces(fig, df_site1, row=1, col=1)
-fig = add_traces(fig, df_site2, row=2, col=1)
+fig = add_sensor_subplot(fig, df_site1, row=1, col=1)
+fig = add_sensor_subplot(fig, df_site2, row=2, col=1)
 
 # Set layout properties
 fig.update_layout(
